@@ -1,12 +1,12 @@
 workspace = { }
 
 [package]
-name = "starter-app"
+name = "xstream"
 version = "1.0.0"
-description = "Starter App"
+description = "XStream is a hybrid music player application."
 license = ""
 repository = ""
-default-run = "starter-app"
+default-run = "xstream"
 edition = "2018"
 build = "src/build.rs"
 
@@ -23,5 +23,5 @@ embedded-server = [ "tauri/embedded-server" ]
 no-server = [ "tauri/no-server" ]
 
 [[bin]]
-name = "starter-app"
+name = "xstream"
 path = "src/main.rs"

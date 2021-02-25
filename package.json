@@ -1,8 +1,8 @@
 {
-   "name": "starter-next-typescript",
+   "name": "xstream",
    "version": "1.0.0",
-   "description": "A Tauri starter for web development using Typescript and Next.js based on my preferences.",
-   "repository": "https://github.com/matthieu-locussol/starter-next-typescript",
+   "description": "XStream is a hybrid music player application.",
+   "repository": "https://github.com/matthieu-locussol/xstream",
    "author": "Matthieu LOCUSSOL",
    "license": "MIT",
    "private": false,
