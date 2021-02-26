@@ -10,8 +10,9 @@
       "dev": "yarn run next dev",
       "build": "yarn run next build && yarn run next export",
       "start": "yarn run next start",
+      "tauri": "tauri",
       "lint": "eslint --ignore-path .gitignore .",
-      "tauri": "kill -9 $(sudo lsof -t -i:3000) && tauri"
+      "kill": "kill -9 $(sudo lsof -t -i:3000)"
    },
    "pre-commit": [
       "lint"
