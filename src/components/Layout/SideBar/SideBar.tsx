@@ -1,7 +1,7 @@
 import React from 'react';
 import { Typography } from '@material-ui/core';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-import { SideBarLink } from '@/components/Layout/SideBarLink';
+import { SideBarLink } from '@/components/Layout/SideBar/SideBarLink';
 
 export const SideBar = (): JSX.Element => {
    const classes = useStyles();

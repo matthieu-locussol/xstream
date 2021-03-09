@@ -3,7 +3,7 @@ import React, { useRef } from 'react';
 import { useOverflow } from 'use-overflow';
 import { Button } from '@material-ui/core';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-import { SideBarLinkWrapper } from '@/components/Layout/SideBarLinkWrapper';
+import { SideBarLinkWrapper } from '@/components/Layout/SideBar/SideBarLinkWrapper';
 
 type SideBarLinkProps = {
    active?: boolean;

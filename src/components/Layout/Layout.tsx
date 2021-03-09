@@ -2,7 +2,7 @@ import React from 'react';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
 import { MusicBar } from '@/components/Layout/MusicBar/MusicBar';
 import { NavBar } from '@/components/Layout/NavBar';
-import { SideBar } from '@/components/Layout/SideBar';
+import { SideBar } from '@/components/Layout/SideBar/SideBar';
 
 type LayoutProps = {
    children: React.ReactNode;
