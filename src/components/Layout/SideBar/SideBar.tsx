@@ -17,6 +17,25 @@ export const SideBar = (): JSX.Element => {
             <SideBarLink value="Top charts" />
             <SideBarLink value="New stuff" />
             <SideBarLink value="Here is a very long name that have its own tooltip blablabla lol" />
+            <SideBarLink value="Suggest" />
+            <SideBarLink value="Suggest" />
+            <SideBarLink value="Suggest" />
+            <SideBarLink value="Suggest" />
+            <SideBarLink value="Suggest" />
+            <SideBarLink value="Suggest" />
+            <SideBarLink value="Suggest" />
+            <SideBarLink value="Suggest" />
+            <SideBarLink value="Suggest" />
+            <SideBarLink value="Suggest" />
+            <SideBarLink value="Suggest" />
+            <SideBarLink value="Suggest" />
+            <SideBarLink value="Suggest" />
+            <SideBarLink value="Suggest" />
+            <SideBarLink value="Suggest" />
+            <SideBarLink value="Suggest" />
+            <SideBarLink value="Suggest" />
+            <SideBarLink value="Suggest" />
+            <SideBarLink value="Suggest" />
          </div>
       </div>
    );
@@ -27,6 +46,7 @@ const useStyles = makeStyles((theme: Theme) =>
       root: {
          minWidth: '250px',
          display: 'flex',
+         overflow: 'auto',
          flexDirection: 'column',
          padding: theme.spacing(2),
          paddingLeft: theme.spacing(3),
