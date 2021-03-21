@@ -1,6 +1,7 @@
 import React from 'react';
 import { Avatar, ListItemText } from '@material-ui/core';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+import Marquee from 'react-fast-marquee';
 
 type MusicThumbnailProps = {
    url: string;
@@ -14,9 +15,9 @@ export const MusicThumbnail = ({ url, musicName, artistName }: MusicThumbnailPro
    return (
       <div className={classes.root}>
          <Avatar variant="rounded" src={url} alt={`${musicName}`} className={classes.avatar} />
-         <div className={classes.informations}>
-            <ListItemText primary={musicName} secondary={artistName} />
-         </div>
+         <Marquee pauseOnHover pauseOnClick gradient={false} style={{ maxWidth: 160 }}>
+            <ListItemText primary={musicName} secondary={artistName} classes={{ root: classes.text }} />
+         </Marquee>
       </div>
    );
 };
@@ -29,15 +30,15 @@ const useStyles = makeStyles((theme: Theme) =>
       },
       avatar: {
          marginLeft: theme.spacing(3),
+         marginRight: theme.spacing(2),
          filter: `drop-shadow(0 0 .25rem ${theme.palette.primary.main})`,
          transition: 'all 0.3s',
          '&:hover': {
             filter: `drop-shadow(0 0 0.75rem ${theme.palette.primary.main})`,
          },
       },
-      informations: {
-         minWidth: 200,
-         marginLeft: theme.spacing(2),
+      text: {
+         whiteSpace: 'nowrap',
       },
    }),
 );
