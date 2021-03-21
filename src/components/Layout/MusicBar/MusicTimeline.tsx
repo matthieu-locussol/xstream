@@ -73,6 +73,7 @@ const CustomMusicSlider = withStyles({
 const useStyles = makeStyles((theme: Theme) =>
    createStyles({
       root: {
+         marginLeft: theme.spacing(1),
          marginRight: theme.spacing(1),
       },
       slider: {
