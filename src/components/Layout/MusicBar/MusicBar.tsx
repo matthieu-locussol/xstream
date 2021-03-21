@@ -4,7 +4,7 @@ import { Volume } from '@/components/Volume/Volume';
 import { MusicPlayer } from '@/components/Layout/MusicBar/MusicPlayer';
 import { MusicThumbnail } from '@/components/Layout/MusicBar/MusicThumbnail';
 import { MusicTimeline } from '@/components/Layout/MusicBar/MusicTimeline';
-import { MusicTracklist } from '@/components/Layout/MusicBar/MusicTracklist';
+import { MusicTracklistButton } from '@/components/Layout/MusicBar/MusicTracklistButton';
 
 export const MusicBar = (): JSX.Element => {
    const classes = useStyles();
@@ -22,7 +22,7 @@ export const MusicBar = (): JSX.Element => {
                artistName="Vald"
             />
             <MusicTimeline />
-            <MusicTracklist />
+            <MusicTracklistButton />
          </div>
       </div>
    );
