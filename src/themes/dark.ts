@@ -26,10 +26,10 @@ export const themeDark = createMuiTheme({
       MuiCssBaseline: {
          '@global': {
             '*::-webkit-scrollbar': {
-               minWidth: '5px',
+               width: 8,
             },
             '&::-webkit-scrollbar-thumb': {
-               backgroundColor: 'red',
+               backgroundColor: '#36373c',
             },
             '*:hover': {
                '&::-webkit-scrollbar-thumb': {
