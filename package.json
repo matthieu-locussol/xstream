@@ -24,6 +24,7 @@
       "next": "^10.0.7",
       "react": "^17.0.1",
       "react-dom": "^17.0.1",
+      "react-fast-marquee": "^1.1.1",
       "use-overflow": "^1.1.0"
    },
    "devDependencies": {

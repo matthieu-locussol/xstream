@@ -4968,6 +4968,11 @@ react-dom@^17.0.1:
     object-assign "^4.1.1"
     scheduler "^0.20.1"
 
+react-fast-marquee@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/react-fast-marquee/-/react-fast-marquee-1.1.1.tgz#7e8639c542cb0f1346f69ade1d65fba3bd9028d2"
+  integrity sha512-4XM0kqD0UZ8v1b+u44xMdSlhAND6WYn+5IDpoEHMf5GOGU2X9I3C1tWGUoxs9aAWF90KJ3mYEAr2DJkty2LATg==
+
 react-is@16.13.1, react-is@^16.7.0, react-is@^16.8.1:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
