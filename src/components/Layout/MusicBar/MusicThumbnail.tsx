@@ -65,12 +65,16 @@ const useStyles = makeStyles((theme: Theme) =>
          filter: `drop-shadow(0 0 .25rem ${theme.palette.primary.main})`,
          transition: 'all 0.3s',
          '&:hover': {
-            filter: `drop-shadow(0 0 0.75rem ${theme.palette.primary.main})`,
+            filter: `drop-shadow(0 0 .75rem ${theme.palette.primary.main})`,
+            opacity: 0.9,
+         },
+         '&:active': {
+            opacity: 0.7,
          },
       },
       text: {
          whiteSpace: 'nowrap',
-         marginRight: 32,
+         marginRight: theme.spacing(4),
       },
    }),
 );
