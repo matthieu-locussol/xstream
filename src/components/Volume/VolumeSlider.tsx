@@ -48,7 +48,7 @@ const CustomVolumeSlider = withStyles((theme: Theme) =>
          display: 'flex',
          height: 120,
          marginLeft: theme.spacing(2),
-         color: '#ffffff',
+         color: theme.palette.common.white,
          width: 4,
          filter: `drop-shadow(0 0 .5rem ${theme.palette.primary.main})`,
       },

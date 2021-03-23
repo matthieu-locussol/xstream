@@ -18,9 +18,6 @@ const BorderLinearProgress = withStyles((theme: Theme) =>
          transition: 'all 0.3s',
          backgroundColor: theme.palette.primary.light,
       },
-      active: {
-         backgroundColor: 'transparent',
-      },
       bar: {
          position: 'relative',
          borderRadius: 5,
