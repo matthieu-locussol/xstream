@@ -16,6 +16,7 @@ const BorderLinearProgress = withStyles((theme: Theme) =>
          borderRadius: 4,
          zIndex: 1,
          transition: 'all 0.3s',
+         backgroundColor: theme.palette.primary.light,
       },
       active: {
          backgroundColor: 'transparent',
@@ -23,7 +24,6 @@ const BorderLinearProgress = withStyles((theme: Theme) =>
       bar: {
          position: 'relative',
          borderRadius: 5,
-         backgroundColor: `${theme.palette.primary.dark}80`,
       },
    }),
 )(LinearProgress);
@@ -73,40 +73,42 @@ export const MusicTimeline = ({ playerRef }: MusicTimelineProps): JSX.Element =>
    );
 };
 
-const CustomMusicSlider = withStyles({
-   root: {
-      color: '#3d50fa',
-      height: 8,
-      position: 'relative',
-      top: 0,
-      filter: 'drop-shadow(0 0 .25rem #3d50fa)',
-      transition: 'all 0.3s',
-      zIndex: 2,
-      '&:hover': {
-         filter: `drop-shadow(0 0 0.5rem #3d50fa)`,
+const CustomMusicSlider = withStyles((theme: Theme) =>
+   createStyles({
+      root: {
+         color: theme.palette.primary.main,
+         height: 8,
+         position: 'relative',
+         top: 0,
+         filter: `drop-shadow(0 0 .25rem ${theme.palette.primary.main})`,
+         transition: 'all 0.3s',
+         zIndex: 2,
+         '&:hover': {
+            filter: `drop-shadow(0 0 0.5rem ${theme.palette.primary.main})`,
+         },
       },
-   },
-   thumb: {
-      height: 12,
-      width: 12,
-      marginTop: -2,
-      marginLeft: -6,
-      transition: 'all 0.3s',
-   },
-   track: {
-      color: '#3d50fa',
-      height: 8,
-      borderRadius: 4,
-      transition: 'all 0.3s',
-   },
-   rail: {
-      color: '#9f9fa0',
-      height: 8,
-      borderRadius: 4,
-      transition: 'all 0.3s',
-      zIndex: 0,
-   },
-})(Slider);
+      thumb: {
+         height: 12,
+         width: 12,
+         marginTop: -2,
+         marginLeft: -6,
+         transition: 'all 0.3s',
+      },
+      track: {
+         color: theme.palette.primary.main,
+         height: 8,
+         borderRadius: 4,
+         transition: 'all 0.3s',
+      },
+      rail: {
+         color: '#9f9fa0',
+         height: 8,
+         borderRadius: 4,
+         transition: 'all 0.3s',
+         zIndex: 0,
+      },
+   }),
+)(Slider);
 
 const useStyles = makeStyles((theme: Theme) =>
    createStyles({
