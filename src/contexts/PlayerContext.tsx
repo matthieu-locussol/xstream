@@ -15,6 +15,7 @@ type PlayerAction =
    | {
         type: 'SET_TRACK_PROGRESS';
         progress: number;
+        buffered?: number;
      }
    | {
         type: 'SHOULD_WAIT_NEXT_UPDATE';
@@ -27,6 +28,7 @@ export type Track = {
    source: string;
    duration: number;
    progress: number;
+   buffered?: number;
    live: boolean;
    waitNextUpdate: boolean;
 };
@@ -46,6 +48,7 @@ const initialState: PlayerState = {
       source: 'YouTube',
       duration: 0,
       progress: 0,
+      buffered: undefined,
       live: false,
       waitNextUpdate: false,
    },
@@ -100,6 +103,7 @@ const reducer = (state: PlayerState, action: PlayerAction) => {
             track: {
                ...state.track,
                progress: action.progress,
+               buffered: action.buffered ? action.buffered : state.track.buffered,
             },
          };
          break;

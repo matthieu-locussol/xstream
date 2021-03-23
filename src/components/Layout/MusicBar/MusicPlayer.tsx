@@ -26,6 +26,7 @@ export const MusicPlayer = ({ playerRef }: MusicPlayerProps): JSX.Element => {
          dispatch({
             type: 'SET_TRACK_PROGRESS',
             progress: Math.round(state.playedSeconds),
+            buffered: state.loaded,
          });
       }
    };
