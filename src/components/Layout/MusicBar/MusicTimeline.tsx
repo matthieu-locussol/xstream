@@ -1,35 +1,45 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { createStyles, makeStyles, withStyles, Theme } from '@material-ui/core/styles';
 import { Grid, Slider } from '@material-ui/core';
 import { MusicTimevalue } from '@/components/Layout/MusicBar/MusicTimevalue';
+import { usePlayer } from '@/contexts/PlayerContext';
+import ReactPlayer from 'react-player';
 
-export const MusicTimeline = (): JSX.Element => {
+type MusicTimelineProps = {
+   playerRef: React.MutableRefObject<ReactPlayer | null>;
+};
+
+export const MusicTimeline = ({ playerRef }: MusicTimelineProps): JSX.Element => {
    const classes = useStyles();
-   const [currentTime, setCurrentTime] = useState(0);
-   const [timeoutRef, setTimeoutRef] = useState(-1);
-
-   useEffect(() => {
-      setTimeoutRef(window.setTimeout(() => setCurrentTime(Math.min(currentTime + 1, 336)), 1000));
-   }, [currentTime]);
+   const { player, dispatch } = usePlayer();
 
    return (
       <Grid container spacing={2} className={classes.root}>
          <Grid item className={classes.time}>
-            <MusicTimevalue time={currentTime} />
+            <MusicTimevalue time={player.track.live ? 0 : player.track.progress} />
          </Grid>
          <Grid item xs className={classes.slider}>
             <CustomMusicSlider
-               value={currentTime}
+               value={player.track.live ? 0 : player.track.progress}
                onChange={(_, value) => {
-                  window.clearTimeout(timeoutRef);
-                  setCurrentTime(Number(value));
+                  if (!player.track.live) {
+                     dispatch({
+                        type: 'SET_TRACK_PROGRESS',
+                        progress: Number(value),
+                     });
+                     playerRef?.current?.seekTo(Number(value), 'seconds');
+                     dispatch({
+                        type: 'SHOULD_WAIT_NEXT_UPDATE',
+                        shouldWait: true,
+                     });
+                  }
                }}
                min={0}
-               max={336}
+               max={player.track.live ? 0 : player.track.duration}
             />
          </Grid>
          <Grid item className={classes.time}>
-            <MusicTimevalue time={336} />
+            <MusicTimevalue time={player.track.live ? 0 : player.track.duration} />
          </Grid>
       </Grid>
    );

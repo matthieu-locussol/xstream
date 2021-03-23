@@ -4,6 +4,7 @@ import type { AppProps } from 'next/app';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { ThemeProvider } from '@material-ui/core/styles';
 import { themeDark } from '@/themes/dark';
+import { PlayerProvider } from '@/contexts/PlayerContext';
 
 export default function MyApp(props: AppProps): JSX.Element {
    const { Component, pageProps } = props;
@@ -15,11 +16,13 @@ export default function MyApp(props: AppProps): JSX.Element {
 
    return (
       <ThemeProvider theme={themeDark}>
-         <Head>
-            <title>XStream ・ Modern playlist manager</title>
-         </Head>
-         <CssBaseline />
-         <Component {...pageProps} />
+         <PlayerProvider>
+            <Head>
+               <title>XStream ・ Modern playlist manager</title>
+            </Head>
+            <CssBaseline />
+            <Component {...pageProps} />
+         </PlayerProvider>
       </ThemeProvider>
    );
 }

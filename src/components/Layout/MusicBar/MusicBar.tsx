@@ -1,27 +1,32 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import { Volume } from '@/components/Volume/Volume';
-import { MusicPlayer } from '@/components/Layout/MusicBar/MusicPlayer';
+import { MusicControls } from '@/components/Layout/MusicBar/MusicControls';
 import { MusicThumbnail } from '@/components/Layout/MusicBar/MusicThumbnail';
 import { MusicTimeline } from '@/components/Layout/MusicBar/MusicTimeline';
 import { MusicTracklistButton } from '@/components/Layout/MusicBar/MusicTracklistButton';
+import { usePlayer } from '@/contexts/PlayerContext';
+import ReactPlayer from 'react-player';
 
 export const MusicBar = (): JSX.Element => {
    const classes = useStyles();
+   const playerRef = useRef<ReactPlayer | null>(null);
+   const { player } = usePlayer();
 
    return (
       <div className={classes.root}>
          <div className={classes.player}>
-            <MusicPlayer />
+            <MusicControls />
          </div>
          <div className={classes.content}>
             <Volume />
             <MusicThumbnail
-               url="https://static.fnac-static.com/multimedia/Images/FR/NR/4b/e9/81/8513867/1507-1/tsp20161215132633/Agartha.jpg"
-               musicName="Ma meilleure amie"
-               artistName="Vald"
+               url="https://midiaresearch.com/storage/uploads/blog/images/2017/07/youtube-square-logo.png"
+               musicName={player.track.title}
+               artistName={player.track.source}
+               playerRef={playerRef}
             />
-            <MusicTimeline />
+            <MusicTimeline playerRef={playerRef} />
             <MusicTracklistButton />
          </div>
       </div>

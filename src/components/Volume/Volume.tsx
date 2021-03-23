@@ -2,16 +2,17 @@ import React, { useState } from 'react';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import { VolumeButton } from '@/components/Volume/VolumeButton';
 import { VolumeSlider } from '@/components/Volume/VolumeSlider';
+import { usePlayer } from '@/contexts/PlayerContext';
 
 export const Volume = (): JSX.Element => {
    const classes = useStyles();
+   const { player } = usePlayer();
    const [show, setShow] = useState(false);
-   const [volume, setVolume] = useState(70);
 
    return (
       <div className={classes.root}>
-         <VolumeButton active={show} volume={volume} onClick={() => setShow(!show)} />
-         <VolumeSlider open={show} volume={volume} onClose={() => setShow(false)} setVolume={setVolume} />
+         <VolumeButton active={show} volume={player.volume} onClick={() => setShow(!show)} />
+         <VolumeSlider open={show} onClose={() => setShow(false)} />
       </div>
    );
 };

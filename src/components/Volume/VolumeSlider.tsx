@@ -1,16 +1,16 @@
 import React from 'react';
 import { ClickAwayListener, Fade, Slider } from '@material-ui/core';
 import { createStyles, makeStyles, withStyles } from '@material-ui/core/styles';
+import { usePlayer } from '@/contexts/PlayerContext';
 
 type VolumeSliderProps = {
    open: boolean;
-   volume: number;
    onClose: () => void;
-   setVolume: React.Dispatch<React.SetStateAction<number>>;
 };
 
-export const VolumeSlider = ({ open, volume, onClose, setVolume }: VolumeSliderProps): JSX.Element => {
+export const VolumeSlider = ({ open, onClose }: VolumeSliderProps): JSX.Element => {
    const classes = useStyles();
+   const { player, dispatch } = usePlayer();
 
    return (
       <Fade in={open} unmountOnExit={true}>
@@ -19,9 +19,15 @@ export const VolumeSlider = ({ open, volume, onClose, setVolume }: VolumeSliderP
                <ClickAwayListener onClickAway={onClose}>
                   <CustomVolumeSlider
                      orientation="vertical"
-                     value={volume}
-                     defaultValue={70}
-                     onChange={(_, value) => setVolume(Number(value))}
+                     value={player.volume}
+                     onChange={(_, value) => {
+                        if (value !== player.volume) {
+                           dispatch({
+                              type: 'SET_VOLUME',
+                              volume: Number(value),
+                           });
+                        }
+                     }}
                      step={5}
                      min={0}
                      max={100}

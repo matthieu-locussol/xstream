@@ -1,26 +1,52 @@
-import React, { useState } from 'react';
-import {
-   PlayArrow as PlayIcon,
-   Pause as PauseIcon,
-   SkipNext as NextIcon,
-   SkipPrevious as PreviousIcon,
-} from '@material-ui/icons';
-import { IconButton } from '@/components/IconButton';
+import React from 'react';
+import ReactPlayer from 'react-player/lazy';
+import { usePlayer } from '@/contexts/PlayerContext';
 
-export const MusicPlayer = (): JSX.Element => {
-   const [pause, setPause] = useState(false);
+type OnProgressState = {
+   played: number;
+   playedSeconds: number;
+   loaded: number;
+   loadedSeconds: number;
+};
+
+type MusicPlayerProps = {
+   playerRef: React.MutableRefObject<ReactPlayer | null>;
+};
+
+export const MusicPlayer = ({ playerRef }: MusicPlayerProps): JSX.Element => {
+   const { player, dispatch } = usePlayer();
+
+   const updateTimeline = (state: OnProgressState) => {
+      if (player.track.waitNextUpdate) {
+         dispatch({
+            type: 'SHOULD_WAIT_NEXT_UPDATE',
+            shouldWait: false,
+         });
+      } else {
+         dispatch({
+            type: 'SET_TRACK_PROGRESS',
+            progress: Math.round(state.playedSeconds),
+         });
+      }
+   };
+
+   const updateDuration = (duration: number) => {
+      dispatch({
+         type: 'SET_TRACK_DURATION',
+         duration,
+      });
+   };
 
    return (
-      <React.Fragment>
-         <IconButton disabled>
-            <PreviousIcon fontSize="large" />
-         </IconButton>
-         <IconButton onClick={() => setPause(!pause)}>
-            {pause ? <PauseIcon fontSize="large" /> : <PlayIcon fontSize="large" />}
-         </IconButton>
-         <IconButton disabled>
-            <NextIcon fontSize="large" />
-         </IconButton>
-      </React.Fragment>
+      <ReactPlayer
+         ref={playerRef}
+         width={256}
+         height={144}
+         playing={player.playing}
+         volume={player.volume / 100}
+         onDuration={updateDuration}
+         onProgress={updateTimeline}
+         url={player.track.url}
+      />
    );
 };
