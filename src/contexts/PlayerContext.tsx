@@ -21,18 +21,20 @@ type PlayerAction =
         shouldWait: boolean;
      };
 
+export type Track = {
+   url: string;
+   title: string;
+   source: string;
+   duration: number;
+   progress: number;
+   live: boolean;
+   waitNextUpdate: boolean;
+};
+
 type PlayerState = {
    playing: boolean;
    volume: number;
-   track: {
-      url: string;
-      title: string;
-      source: string;
-      duration: number;
-      progress: number;
-      live: boolean;
-      waitNextUpdate: boolean;
-   };
+   track: Track;
 };
 
 const initialState: PlayerState = {

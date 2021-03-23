@@ -22,8 +22,7 @@ export const MusicBar = (): JSX.Element => {
             <Volume />
             <MusicThumbnail
                url="https://midiaresearch.com/storage/uploads/blog/images/2017/07/youtube-square-logo.png"
-               musicName={player.track.title}
-               artistName={player.track.source}
+               track={player.track}
                playerRef={playerRef}
             />
             <MusicTimeline playerRef={playerRef} />

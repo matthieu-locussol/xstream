@@ -1,19 +1,19 @@
 import clsx from 'clsx';
 import React, { useState } from 'react';
-import { Avatar, ListItemText } from '@material-ui/core';
+import { Avatar, Link, ListItemText } from '@material-ui/core';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import Marquee from 'react-fast-marquee';
 import { MusicPlayer } from '@/components/Layout/MusicBar/MusicPlayer';
 import ReactPlayer from 'react-player';
+import { Track } from '@/contexts/PlayerContext';
 
 type MusicThumbnailProps = {
    url: string;
-   musicName: string;
-   artistName: string;
+   track: Track;
    playerRef: React.MutableRefObject<ReactPlayer | null>;
 };
 
-export const MusicThumbnail = ({ url, musicName, artistName, playerRef }: MusicThumbnailProps): JSX.Element => {
+export const MusicThumbnail = ({ url, track, playerRef }: MusicThumbnailProps): JSX.Element => {
    const classes = useStyles();
    const [hover, setHover] = useState(false);
 
@@ -23,9 +23,11 @@ export const MusicThumbnail = ({ url, musicName, artistName, playerRef }: MusicT
             <MusicPlayer playerRef={playerRef} />
          </div>
          <div className={classes.thumbnail} onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
-            <Avatar variant="rounded" src={url} alt={`${musicName}`} className={classes.avatar} />
+            <Link href={track.url} rel="noreferrer" target="_blank">
+               <Avatar variant="rounded" src={url} alt={track.source} className={classes.avatar} />
+            </Link>
             <Marquee gradient={false} style={{ maxWidth: 160 }}>
-               <ListItemText primary={musicName} secondary={artistName} classes={{ root: classes.text }} />
+               <ListItemText primary={track.title} secondary={track.source} classes={{ root: classes.text }} />
             </Marquee>
          </div>
       </div>
